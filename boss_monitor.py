@@ -38,11 +38,18 @@ def fetch_bosses():
     return data.get("bosses", [])
 
 
-def calc_next_time(boss):
+def calc_next_time(boss, now):
+    """计算BOSS下一次刷新时间（从现在起的下一次）"""
     last_kill = datetime.strptime(boss["last_kill_time"], "%Y-%m-%d %H:%M:%S")
     interval = boss["interval_hours"]
     idx = boss["round"]["interval_index"]
-    return last_kill + timedelta(hours=interval * idx)
+    # 当前轮次的刷新时间
+    current_round_time = last_kill + timedelta(hours=interval * idx)
+    # 如果当前轮次刷新时间已过（overdue），继续往后推一个间隔
+    next_time = current_round_time
+    while next_time <= now:
+        next_time += timedelta(hours=interval)
+    return next_time
 
 
 def send_wecom_markdown(content):
@@ -80,7 +87,7 @@ def main():
 
     upcoming = []
     for b in bosses:
-        next_time = calc_next_time(b)
+        next_time = calc_next_time(b, now)
         diff_min = (next_time - now).total_seconds() / 60
         if diff_min > 0:
             name = b["boss_name"]
