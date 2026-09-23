@@ -143,13 +143,11 @@ def main():
 
     for group in groups:
         lines = ["⚠️ **BOSS紧急刷新提醒**\n"]
-        for item in group:
+        for i, item in enumerate(group, 1):
             lines.append(
-                f"🔴 **{item['name']}（{item['drop']}）"
-                f"将于 {item['next_time'].strftime('%H:%M')} 刷新，"
-                f"还有约{int(item['diff_min'])}分钟！**"
+                f"{i}. {item['name']}（{item['drop']}）"
+                f"{item['next_time'].strftime('%H:%M')}刷新"
             )
-        lines.append("\n请立即前往卡位！")
 
         content = "\n".join(lines)
         success = send_wecom_markdown(content)
