@@ -66,11 +66,8 @@ WEBHOOK_URL = os.environ.get(
 )
 
 
-def send_wecom_markdown(content):
-    """同时通过wecom-cli和Webhook发送markdown消息"""
-    success = False
-
-    # 方式1: wecom-cli
+def send_wecom_cli(content):
+    """通过wecom-cli发送markdown消息"""
     try:
         payload = {"chat_id": CHAT_ID, "msg_type": "markdown", "markdown": {"content": content}}
         result = subprocess.run(
@@ -79,18 +76,19 @@ def send_wecom_markdown(content):
         )
         if result.returncode == 0:
             print("wecom-cli发送成功")
-            success = True
+            return True
         else:
             print(f"wecom-cli发送失败: {result.stderr}")
+            return False
     except Exception as e:
         print(f"wecom-cli发送异常: {e}")
+        return False
 
-    # 方式2: Webhook
+
+def send_webhook(content):
+    """通过Webhook发送markdown消息"""
     try:
-        webhook_payload = {
-            "msgtype": "markdown",
-            "markdown": {"content": content}
-        }
+        webhook_payload = {"msgtype": "markdown", "markdown": {"content": content}}
         req = urllib.request.Request(
             WEBHOOK_URL,
             data=json.dumps(webhook_payload).encode("utf-8"),
@@ -98,11 +96,10 @@ def send_wecom_markdown(content):
         )
         with urllib.request.urlopen(req, timeout=15) as resp:
             print("Webhook发送成功")
-            success = True
+            return True
     except Exception as e:
         print(f"Webhook发送异常: {e}")
-
-    return success
+        return False
 
 
 def main():
@@ -153,16 +150,26 @@ def main():
         print("无需提醒，退出")
         return
 
+    # wecom-cli: 每个BOSS单独一条
     for item in to_alert:
         content = (
             f"{item['name']}（{item['drop']}）"
             f"{item['next_time'].strftime('%H:%M')}刷新，"
             f"还有{int(item['diff_min'])}分钟"
         )
-        success = send_wecom_markdown(content)
-
-        if success:
+        if send_wecom_cli(content):
             alerted[item["alert_key"]] = item["alert_key"].split("_")[1]
+
+    # Webhook: 所有BOSS合并成一条
+    webhook_lines = []
+    for i, item in enumerate(to_alert, 1):
+        webhook_lines.append(
+            f"{i}. {item['name']}（{item['drop']}）"
+            f"{item['next_time'].strftime('%H:%M')}刷新，"
+            f"还有{int(item['diff_min'])}分钟"
+        )
+    webhook_content = "\n".join(webhook_lines)
+    send_webhook(webhook_content)
 
     save_state({"alerted": alerted})
     print("完成")
