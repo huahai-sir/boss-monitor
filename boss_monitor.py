@@ -131,35 +131,16 @@ def main():
         print("无需提醒，退出")
         return
 
-    groups = []
-    current_group = [to_alert[0]]
-    base_time = to_alert[0]["next_time"]
-
-    for u in to_alert[1:]:
-        diff = (u["next_time"] - base_time).total_seconds() / 60
-        if diff <= GROUP_WINDOW:
-            current_group.append(u)
-        else:
-            groups.append(current_group)
-            current_group = [u]
-            base_time = u["next_time"]
-    groups.append(current_group)
-
-    for group in groups:
-        lines = []
-        for i, item in enumerate(group, 1):
-            lines.append(
-                f"{i}. {item['name']}（{item['drop']}）"
-                f"{item['next_time'].strftime('%H:%M')}刷新，"
-                f"还有{int(item['diff_min'])}分钟"
-            )
-
-        content = "\n".join(lines)
+    for item in to_alert:
+        content = (
+            f"{item['name']}（{item['drop']}）"
+            f"{item['next_time'].strftime('%H:%M')}刷新，"
+            f"还有{int(item['diff_min'])}分钟"
+        )
         success = send_wecom_markdown(content)
 
         if success:
-            for item in group:
-                alerted[item["alert_key"]] = item["alert_key"].split("_")[1]
+            alerted[item["alert_key"]] = item["alert_key"].split("_")[1]
 
     save_state({"alerted": alerted})
     print("完成")
