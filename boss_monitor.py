@@ -146,7 +146,8 @@ def main():
         for i, item in enumerate(group, 1):
             lines.append(
                 f"{i}. {item['name']}（{item['drop']}）"
-                f"{item['next_time'].strftime('%H:%M')}刷新"
+                f"{item['next_time'].strftime('%H:%M')}刷新，"
+                f"还有{int(item['diff_min'])}分钟"
             )
 
         content = "\n".join(lines)
