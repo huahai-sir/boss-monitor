@@ -47,7 +47,8 @@ def fetch_bosses():
 
 def calc_next_time(boss, now):
     """计算BOSS下一次刷新时间（从现在起的下一次）"""
-    last_kill = datetime.strptime(boss["last_kill_time"], "%Y-%m-%d %H:%M:%S")
+    # API返回的last_kill_time是UTC时间，转换为北京时间UTC+8
+    last_kill = datetime.strptime(boss["last_kill_time"], "%Y-%m-%d %H:%M:%S") + timedelta(hours=8)
     interval = boss["interval_hours"]
     idx = boss["round"]["interval_index"]
     # 当前轮次的刷新时间
