@@ -9,19 +9,16 @@ jobs:
   monitor:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
       - name: Install wecom-cli
         run: npm install -g @wecom/cli
-      - name: Setup wecom credentials
+      - name: Setup credentials
         run: |
           mkdir -p ~/.config/wecom
           echo "${{ secrets.WECOM_KEY }}" > ~/.config/wecom/.encryption_key
           echo "${{ secrets.WECOM_CRED }}" | base64 -d > ~/.config/wecom/credentials.enc
           chmod 600 ~/.config/wecom/.encryption_key ~/.config/wecom/credentials.enc
-      - name: Verify auth
-        run: wecom-cli auth show --status
-      - name: Run Boss Monitor
+      - name: Run monitor
         env:
           WECHAT_CHAT_ID: ${{ secrets.WECHAT_CHAT_ID }}
         run: python3 boss_monitor.py
@@ -32,4 +29,3 @@ jobs:
           git add state.json
           git diff --staged --quiet || git commit -m "update state"
           git push
-
