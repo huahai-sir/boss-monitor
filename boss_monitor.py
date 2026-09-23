@@ -60,27 +60,49 @@ def calc_next_time(boss, now):
     return next_time
 
 
+WEBHOOK_URL = os.environ.get(
+    "WECHAT_WEBHOOK_URL",
+    "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=cef13279-9a11-436a-ab26-ed0d2bc60240"
+)
+
+
 def send_wecom_markdown(content):
-    """通过wecom-cli发送markdown消息"""
-    payload = {
-        "chat_id": CHAT_ID,
-        "msg_type": "markdown",
-        "markdown": {"content": content}
-    }
+    """同时通过wecom-cli和Webhook发送markdown消息"""
+    success = False
+
+    # 方式1: wecom-cli
     try:
+        payload = {"chat_id": CHAT_ID, "msg_type": "markdown", "markdown": {"content": content}}
         result = subprocess.run(
             ["wecom-cli", "message", "aibot", "send", "--json", json.dumps(payload)],
             capture_output=True, text=True, timeout=30
         )
         if result.returncode == 0:
-            print("企业微信消息发送成功")
-            return True
+            print("wecom-cli发送成功")
+            success = True
         else:
-            print(f"发送失败: {result.stderr}")
-            return False
+            print(f"wecom-cli发送失败: {result.stderr}")
     except Exception as e:
-        print(f"发送异常: {e}")
-        return False
+        print(f"wecom-cli发送异常: {e}")
+
+    # 方式2: Webhook
+    try:
+        webhook_payload = {
+            "msgtype": "markdown",
+            "markdown": {"content": content}
+        }
+        req = urllib.request.Request(
+            WEBHOOK_URL,
+            data=json.dumps(webhook_payload).encode("utf-8"),
+            headers={"Content-Type": "application/json"}
+        )
+        with urllib.request.urlopen(req, timeout=15) as resp:
+            print("Webhook发送成功")
+            success = True
+    except Exception as e:
+        print(f"Webhook发送异常: {e}")
+
+    return success
 
 
 def main():
