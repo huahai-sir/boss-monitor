@@ -83,7 +83,10 @@ def send_wecom_markdown(content):
 
 
 def main():
-    now = datetime.now()
+    from datetime import timezone
+    # 北京时间 UTC+8
+    bj_tz = timezone(timedelta(hours=8))
+    now = datetime.now(bj_tz).replace(tzinfo=None)
     print(f"当前时间: {now.strftime('%Y-%m-%d %H:%M:%S')}")
 
     bosses = fetch_bosses()
