@@ -142,7 +142,7 @@ def main():
     groups.append(current_group)
 
     for group in groups:
-        lines = ["⚠️ **BOSS紧急刷新提醒**\n"]
+        lines = []
         for i, item in enumerate(group, 1):
             lines.append(
                 f"{i}. {item['name']}（{item['drop']}）"
