@@ -98,7 +98,7 @@ def main():
         diff_min = (next_time - now).total_seconds() / 60
         if diff_min > 0:
             name = b["boss_name"]
-            drop = "全紫" if b["drop_color"] == "purple" else "有粉"
+            drop = "紫" if b["drop_color"] == "purple" else "粉"
             alert_key = f"{name}_{next_time.strftime('%Y%m%d%H%M')}"
             upcoming.append({
                 "name": name,
