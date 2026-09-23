@@ -33,9 +33,16 @@ def save_state(state):
 
 def fetch_bosses():
     req = urllib.request.Request(BOSS_API_URL, headers={"User-Agent": "BossMonitor/1.0"})
-    with urllib.request.urlopen(req, timeout=15) as resp:
-        data = json.loads(resp.read().decode("utf-8"))
-    return data.get("bosses", [])
+    last_err = None
+    for i in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=60) as resp:
+                data = json.loads(resp.read().decode("utf-8"))
+            return data.get("bosses", [])
+        except Exception as e:
+            last_err = e
+            print(f"第{i+1}次请求失败: {e}")
+    raise last_err
 
 
 def calc_next_time(boss, now):
