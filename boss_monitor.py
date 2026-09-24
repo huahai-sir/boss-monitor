@@ -67,9 +67,9 @@ WEBHOOK_URL = os.environ.get(
 
 
 def send_wecom_cli(content):
-    """通过wecom-cli发送markdown消息"""
+    """通过wecom-cli发送text消息"""
     try:
-        payload = {"chat_id": CHAT_ID, "msg_type": "markdown", "markdown": {"content": content}}
+        payload = {"chat_id": CHAT_ID, "msg_type": "text", "text": {"content": content}}
         result = subprocess.run(
             ["wecom-cli", "message", "aibot", "send", "--json", json.dumps(payload)],
             capture_output=True, text=True, timeout=30
@@ -86,9 +86,9 @@ def send_wecom_cli(content):
 
 
 def send_webhook(content):
-    """通过Webhook发送markdown消息"""
+    """通过Webhook发送text消息"""
     try:
-        webhook_payload = {"msgtype": "markdown", "markdown": {"content": content}}
+        webhook_payload = {"msgtype": "text", "text": {"content": content}}
         req = urllib.request.Request(
             WEBHOOK_URL,
             data=json.dumps(webhook_payload).encode("utf-8"),
