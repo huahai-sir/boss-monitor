@@ -62,7 +62,7 @@ def calc_next_time(boss, now):
 
 WEBHOOK_URL = os.environ.get(
     "WECHAT_WEBHOOK_URL",
-    "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b8ac8c68-96db-438f-b4ee-e6422dfc5091"
+    "https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=cef13279-9a11-436a-ab26-ed0d2bc60240"
 )
 
 
