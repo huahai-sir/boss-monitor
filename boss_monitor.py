@@ -134,14 +134,35 @@ def main():
     upcoming.sort(key=lambda x: x["next_time"])
     print(f"未过期BOSS: {len(upcoming)} 个")
 
-    to_alert = []
-    for u in upcoming:
-        if u["diff_min"] <= ALERT_MINUTES and u["alert_key"] not in alerted:
-            to_alert.append(u)
+    # 分组：从最早的开始，5分钟窗口内的归为一组
+    groups = []
+    if upcoming:
+        current_group = [upcoming[0]]
+        base_time = upcoming[0]["next_time"]
+        for u in upcoming[1:]:
+            diff = (u["next_time"] - base_time).total_seconds() / 60
+            if diff <= 5:
+                current_group.append(u)
+            else:
+                groups.append(current_group)
+                current_group = [u]
+                base_time = u["next_time"]
+        groups.append(current_group)
 
-    print(f"需要提醒的BOSS: {len(to_alert)} 个")
+    print(f"分组数: {len(groups)}")
 
-    if not to_alert:
+    # 找出需要提醒的组：距离组内最早BOSS刷新<=5分钟，且未提醒过
+    to_alert_groups = []
+    for group in groups:
+        group_base_time = group[0]["next_time"]
+        group_key = group_base_time.strftime("%Y%m%d%H%M")
+        diff_min = (group_base_time - now).total_seconds() / 60
+        if 0 < diff_min <= ALERT_MINUTES and group_key not in alerted:
+            to_alert_groups.append((group, group_key, diff_min))
+
+    print(f"需要提醒的组: {len(to_alert_groups)} 个")
+
+    if not to_alert_groups:
         expired_keys = [k for k, v in alerted.items()
                         if datetime.strptime(v, "%Y%m%d%H%M") < now]
         for k in expired_keys:
@@ -150,20 +171,17 @@ def main():
         print("无需提醒，退出")
         return
 
-    # Webhook: 所有BOSS合并成一条
-    webhook_lines = []
-    for i, item in enumerate(to_alert, 1):
-        webhook_lines.append(
-            f"{i}. {item['name']}（{item['drop']}）"
-            f"{item['next_time'].strftime('%H:%M')}刷新，"
-            f"还有{int(item['diff_min'])}分钟"
-        )
-    webhook_content = "\n".join(webhook_lines)
-    send_webhook(webhook_content)
-
-    # 记录已提醒
-    for item in to_alert:
-        alerted[item["alert_key"]] = item["alert_key"].split("_")[1]
+    # 每组推送一条消息
+    for group, group_key, diff_min in to_alert_groups:
+        webhook_lines = []
+        for i, item in enumerate(group, 1):
+            webhook_lines.append(
+                f"{i}. {item['name']}（{item['drop']}）"
+                f"{item['next_time'].strftime('%H:%M')}刷新"
+            )
+        webhook_content = "\n".join(webhook_lines)
+        send_webhook(webhook_content)
+        alerted[group_key] = group_key
 
     save_state({"alerted": alerted})
     print("完成")
