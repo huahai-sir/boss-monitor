@@ -199,7 +199,7 @@ def main():
 
     # 每组推送一条消息
     for group, group_key, diff_min in to_alert_groups:
-        webhook_lines = []
+        webhook_lines = [f"{len(group)}只BOSS即将刷新："]
         for i, item in enumerate(group, 1):
             short_name = item['name'][:2]  # 名字只取前两个字
             webhook_lines.append(
