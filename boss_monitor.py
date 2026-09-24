@@ -160,6 +160,17 @@ def main():
         if send_wecom_cli(content):
             alerted[item["alert_key"]] = item["alert_key"].split("_")[1]
 
+    # Webhook: 所有BOSS合并成一条
+    webhook_lines = []
+    for i, item in enumerate(to_alert, 1):
+        webhook_lines.append(
+            f"{i}. {item['name']}（{item['drop']}）"
+            f"{item['next_time'].strftime('%H:%M')}刷新，"
+            f"还有{int(item['diff_min'])}分钟"
+        )
+    webhook_content = "\n".join(webhook_lines)
+    send_webhook(webhook_content)
+
     save_state({"alerted": alerted})
     print("完成")
 
