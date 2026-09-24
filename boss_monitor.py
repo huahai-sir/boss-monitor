@@ -16,7 +16,7 @@ BOSS_API_URL = "https://onizuka.cn/api/guild-boss-manual/public/DPXT94"
 CHAT_ID = os.environ.get("WECHAT_CHAT_ID", "wrQa_gFQAAoiH2AthDJoiIAQVAfD7ohw")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.json")
 ALERT_MINUTES = 5
-GROUP_WINDOW = 10
+REFRESH_INTERVAL_HOURS = 6
 
 
 def load_state():
@@ -104,31 +104,55 @@ def send_webhook(content):
 
 def main():
     from datetime import timezone
-    # 北京时间 UTC+8
     bj_tz = timezone(timedelta(hours=8))
     now = datetime.now(bj_tz).replace(tzinfo=None)
     print(f"当前时间: {now.strftime('%Y-%m-%d %H:%M:%S')}")
 
-    bosses = fetch_bosses()
-    print(f"共获取 {len(bosses)} 个BOSS数据")
-
     state = load_state()
     alerted = state.get("alerted", {})
+    last_fetch_time_str = state.get("last_fetch_time")
+    boss_schedule = state.get("boss_schedule", [])
 
-    upcoming = []
-    for b in bosses:
-        next_time = calc_next_time(b, now)
-        diff_min = (next_time - now).total_seconds() / 60
-        if diff_min > 0:
+    # 判断是否需要重新检测网站（每隔6小时）
+    need_refresh = True
+    if last_fetch_time_str:
+        last_fetch_time = datetime.strptime(last_fetch_time_str, "%Y-%m-%d %H:%M:%S")
+        hours_since_fetch = (now - last_fetch_time).total_seconds() / 3600
+        if hours_since_fetch < REFRESH_INTERVAL_HOURS:
+            need_refresh = False
+            print(f"距上次检测仅{hours_since_fetch:.1f}小时，使用缓存时间表")
+
+    # 需要重新检测，获取最新BOSS数据
+    if need_refresh:
+        print("重新检测网站BOSS数据...")
+        bosses = fetch_bosses()
+        print(f"共获取 {len(bosses)} 个BOSS数据")
+
+        boss_schedule = []
+        for b in bosses:
+            next_time = calc_next_time(b, now)
             name = b["boss_name"]
             drop = "紫" if b["drop_color"] == "purple" else "粉"
-            alert_key = f"{name}_{next_time.strftime('%Y%m%d%H%M')}"
-            upcoming.append({
+            boss_schedule.append({
                 "name": name,
                 "drop": drop,
+                "next_time": next_time.strftime("%Y-%m-%d %H:%M:%S"),
+            })
+        boss_schedule.sort(key=lambda x: x["next_time"])
+        state["last_fetch_time"] = now.strftime("%Y-%m-%d %H:%M:%S")
+        state["boss_schedule"] = boss_schedule
+
+    # 解析时间表
+    upcoming = []
+    for item in boss_schedule:
+        next_time = datetime.strptime(item["next_time"], "%Y-%m-%d %H:%M:%S")
+        diff_min = (next_time - now).total_seconds() / 60
+        if diff_min > 0:
+            upcoming.append({
+                "name": item["name"],
+                "drop": item["drop"],
                 "next_time": next_time,
                 "diff_min": diff_min,
-                "alert_key": alert_key,
             })
 
     upcoming.sort(key=lambda x: x["next_time"])
@@ -163,11 +187,13 @@ def main():
     print(f"需要提醒的组: {len(to_alert_groups)} 个")
 
     if not to_alert_groups:
+        # 清理过期的提醒记录
         expired_keys = [k for k, v in alerted.items()
                         if datetime.strptime(v, "%Y%m%d%H%M") < now]
         for k in expired_keys:
             del alerted[k]
-        save_state({"alerted": alerted})
+        state["alerted"] = alerted
+        save_state(state)
         print("无需提醒，退出")
         return
 
@@ -183,7 +209,8 @@ def main():
         send_webhook(webhook_content)
         alerted[group_key] = group_key
 
-    save_state({"alerted": alerted})
+    state["alerted"] = alerted
+    save_state(state)
     print("完成")
 
 
