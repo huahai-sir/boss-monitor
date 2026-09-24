@@ -150,20 +150,15 @@ def main():
         print("无需提醒，退出")
         return
 
-    # Webhook: 所有BOSS合并成一条
-    webhook_lines = []
-    for i, item in enumerate(to_alert, 1):
-        webhook_lines.append(
-            f"{i}. {item['name']}（{item['drop']}）"
+    # wecom-cli: 每个BOSS单独一条
+    for item in to_alert:
+        content = (
+            f"{item['name']}（{item['drop']}）"
             f"{item['next_time'].strftime('%H:%M')}刷新，"
             f"还有{int(item['diff_min'])}分钟"
         )
-    webhook_content = "\n".join(webhook_lines)
-    send_webhook(webhook_content)
-
-    # 记录已提醒
-    for item in to_alert:
-        alerted[item["alert_key"]] = item["alert_key"].split("_")[1]
+        if send_wecom_cli(content):
+            alerted[item["alert_key"]] = item["alert_key"].split("_")[1]
 
     save_state({"alerted": alerted})
     print("完成")
