@@ -13,7 +13,7 @@ from datetime import datetime, timedelta
 
 # ============ 配置 ============
 BOSS_API_URL = "https://onizuka.cn/api/guild-boss-manual/public/DPXT94"
-CHAT_ID = os.environ.get("WECHAT_CHAT_ID", "wrQa_gFQAAdY_Cr4nhi5b1YzvzRHzN5w")
+CHAT_ID = os.environ.get("WECHAT_CHAT_ID", "wrQa_gFQAAoiH2AthDJoiIAQVAfD7ohw")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.json")
 ALERT_MINUTES = 5
 GROUP_WINDOW = 10
