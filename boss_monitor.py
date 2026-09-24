@@ -201,8 +201,9 @@ def main():
     for group, group_key, diff_min in to_alert_groups:
         webhook_lines = []
         for i, item in enumerate(group, 1):
+            short_name = item['name'][:2]  # 名字只取前两个字
             webhook_lines.append(
-                f"{i}. {item['name']}（{item['drop']}）"
+                f"{i}. {short_name}（{item['drop']}）"
                 f"{item['next_time'].strftime('%H:%M')}刷新"
             )
         webhook_content = "\n".join(webhook_lines)
