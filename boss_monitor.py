@@ -18,6 +18,17 @@ STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.jso
 ALERT_MINUTES = 5
 REFRESH_INTERVAL_HOURS = 6
 
+# 固定活动提醒（每周几：0=周一, 6=周日）
+FIXED_EVENTS = [
+    {"name": "世界Boss", "days": [0,1,2,3,4,5,6], "hour": 12, "minute": 0},
+    {"name": "世界Boss", "days": [0,1,2,3,4,5,6], "hour": 20, "minute": 0},
+    {"name": "异教徒地下墓穴（个人战）", "days": [0,2,4], "hour": 12, "minute": 10},
+    {"name": "异教徒地下墓穴（个人战）", "days": [0,2,4], "hour": 20, "minute": 40},
+    {"name": "异教徒地下墓穴（战盟战）", "days": [5,6], "hour": 20, "minute": 40},
+    {"name": "异教徒地下墓穴（战盟战）", "days": [5,6], "hour": 21, "minute": 10},
+    {"name": "黄昏藏身处（4人）", "days": [1,3,5,6], "hour": 19, "minute": 30},
+]
+
 
 def load_state():
     if os.path.exists(STATE_FILE):
@@ -112,6 +123,26 @@ def main():
     alerted = state.get("alerted", {})
     last_fetch_time_str = state.get("last_fetch_time")
     boss_schedule = state.get("boss_schedule", [])
+
+    # ===== 检查固定活动提醒 =====
+    weekday = now.weekday()  # 0=周一, 6=周日
+    event_alerts = []
+    for event in FIXED_EVENTS:
+        if weekday not in event["days"]:
+            continue
+        # 计算今天这个活动的开始时间
+        event_time = now.replace(hour=event["hour"], minute=event["minute"], second=0, microsecond=0)
+        diff_min = (event_time - now).total_seconds() / 60
+        event_key = f"event_{event['name']}_{event_time.strftime('%Y%m%d%H%M')}"
+        if 0 < diff_min <= ALERT_MINUTES and event_key not in alerted:
+            event_alerts.append((event["name"], event_time, event_key))
+
+    if event_alerts:
+        for name, event_time, event_key in event_alerts:
+            content = f"固定活动提醒：{name} {event_time.strftime('%H:%M')}开始，还有{int((event_time - now).total_seconds() / 60)}分钟"
+            send_webhook(content)
+            alerted[event_key] = event_time.strftime('%Y%m%d%H%M')
+            print(f"固定活动提醒: {name}")
 
     # 判断是否需要重新检测网站（每隔6小时）
     need_refresh = True
