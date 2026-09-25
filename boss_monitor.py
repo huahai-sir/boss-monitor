@@ -175,18 +175,18 @@ def main():
 
     print(f"分组数: {len(groups)}")
 
-    # 找出需要提醒的组：距离组内最早BOSS刷新<=5分钟，且未提醒过
-    to_alert_groups = []
+    # 先找出所有距离刷新<=5分钟、且未提醒过的BOSS
+    to_alert_bosses = []
     for group in groups:
-        group_base_time = group[0]["next_time"]
-        group_key = group_base_time.strftime("%Y%m%d%H%M")
-        diff_min = (group_base_time - now).total_seconds() / 60
-        if 0 < diff_min <= ALERT_MINUTES and group_key not in alerted:
-            to_alert_groups.append((group, group_key, diff_min))
+        for item in group:
+            boss_key = f"{item['name']}_{item['next_time'].strftime('%Y%m%d%H%M')}"
+            diff_min = (item['next_time'] - now).total_seconds() / 60
+            if 0 < diff_min <= ALERT_MINUTES and boss_key not in alerted:
+                to_alert_bosses.append(item)
 
-    print(f"需要提醒的组: {len(to_alert_groups)} 个")
+    print(f"需要提醒的BOSS: {len(to_alert_bosses)} 个")
 
-    if not to_alert_groups:
+    if not to_alert_bosses:
         # 清理过期的提醒记录
         expired_keys = [k for k, v in alerted.items()
                         if datetime.strptime(v, "%Y%m%d%H%M") < now]
@@ -197,8 +197,23 @@ def main():
         print("无需提醒，退出")
         return
 
+    # 把需要提醒的BOSS再分组（5分钟窗口内）
+    to_alert_bosses.sort(key=lambda x: x["next_time"])
+    alert_groups = []
+    current_group = [to_alert_bosses[0]]
+    base_time = to_alert_bosses[0]["next_time"]
+    for item in to_alert_bosses[1:]:
+        diff = (item["next_time"] - base_time).total_seconds() / 60
+        if diff <= 5:
+            current_group.append(item)
+        else:
+            alert_groups.append(current_group)
+            current_group = [item]
+            base_time = item["next_time"]
+    alert_groups.append(current_group)
+
     # 每组推送一条消息
-    for group, group_key, diff_min in to_alert_groups:
+    for group in alert_groups:
         webhook_lines = [f"{len(group)}只BOSS即将刷新："]
         for i, item in enumerate(group, 1):
             short_name = item['name'][:2]  # 名字只取前两个字
@@ -208,7 +223,10 @@ def main():
             )
         webhook_content = "\n".join(webhook_lines)
         send_webhook(webhook_content)
-        alerted[group_key] = group_key
+        # 记录每个BOSS已提醒
+        for item in group:
+            boss_key = f"{item['name']}_{item['next_time'].strftime('%Y%m%d%H%M')}"
+            alerted[boss_key] = item['next_time'].strftime('%Y%m%d%H%M')
 
     state["alerted"] = alerted
     save_state(state)
