@@ -22,8 +22,8 @@ REFRESH_INTERVAL_HOURS = 6
 FIXED_EVENTS = [
     {"name": "世界Boss", "days": [0,1,2,3,4,5,6], "hour": 12, "minute": 0},
     {"name": "世界Boss", "days": [0,1,2,3,4,5,6], "hour": 20, "minute": 0},
-    {"name": "异教徒地下墓穴（个人战）", "days": [0,2,4], "hour": 12, "minute": 10},
-    {"name": "异教徒地下墓穴（个人战）", "days": [0,2,4], "hour": 20, "minute": 40},
+    {"name": "异教徒地下墓穴（个人战）", "days": [0,2,4], "hour": 12, "minute": 0},
+    {"name": "异教徒地下墓穴（个人战）", "days": [0,2,4], "hour": 20, "minute": 30},
     {"name": "异教徒地下墓穴（战盟战）", "days": [5,6], "hour": 20, "minute": 40},
     {"name": "异教徒地下墓穴（战盟战）", "days": [5,6], "hour": 21, "minute": 10},
     {"name": "黄昏藏身处（4人）", "days": [1,3,5,6], "hour": 19, "minute": 30},
