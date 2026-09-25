@@ -134,7 +134,7 @@ def main():
         event_time = now.replace(hour=event["hour"], minute=event["minute"], second=0, microsecond=0)
         diff_min = (event_time - now).total_seconds() / 60
         event_key = f"event_{event['name']}_{event_time.strftime('%Y%m%d%H%M')}"
-        if 0 < diff_min <= ALERT_MINUTES and event_key not in alerted:
+        if 4 <= diff_min <= 5 and event_key not in alerted:
             event_alerts.append((event["name"], event_time, event_key))
 
     if event_alerts:
@@ -206,13 +206,13 @@ def main():
 
     print(f"分组数: {len(groups)}")
 
-    # 先找出所有距离刷新<=5分钟、且未提醒过的BOSS
+    # 先找出所有距离刷新在4-5分钟之间、且未提醒过的BOSS
     to_alert_bosses = []
     for group in groups:
         for item in group:
             boss_key = f"{item['name']}_{item['next_time'].strftime('%Y%m%d%H%M')}"
             diff_min = (item['next_time'] - now).total_seconds() / 60
-            if 0 < diff_min <= ALERT_MINUTES and boss_key not in alerted:
+            if 4 <= diff_min <= 5 and boss_key not in alerted:
                 to_alert_bosses.append(item)
 
     print(f"需要提醒的BOSS: {len(to_alert_bosses)} 个")
