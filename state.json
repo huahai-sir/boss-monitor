@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "event_世界Boss_202609252000": "202609252000"
+  },
   "last_fetch_time": "2026-09-25 18:16:15",
   "boss_schedule": [
     {
