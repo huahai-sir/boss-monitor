@@ -164,9 +164,11 @@ def main():
             next_time = calc_next_time(b, now)
             name = b["boss_name"]
             drop = "紫" if b["drop_color"] == "purple" else "粉"
+            probability = b.get("probability", 0)
             boss_schedule.append({
                 "name": name,
                 "drop": drop,
+                "probability": probability,
                 "next_time": next_time.strftime("%Y-%m-%d %H:%M:%S"),
             })
         boss_schedule.sort(key=lambda x: x["next_time"])
@@ -182,6 +184,7 @@ def main():
             upcoming.append({
                 "name": item["name"],
                 "drop": item["drop"],
+                "probability": item.get("probability", 0),
                 "next_time": next_time,
                 "diff_min": diff_min,
             })
@@ -248,8 +251,9 @@ def main():
         webhook_lines = [f"{len(group)}只BOSS即将刷新："]
         for i, item in enumerate(group, 1):
             short_name = item['name'][:2]  # 名字只取前两个字
+            prob = item.get('probability', 0)
             webhook_lines.append(
-                f"{i}. {short_name}（{item['drop']}）"
+                f"{i}. {short_name}（{item['drop']}）{prob}% "
                 f"{item['next_time'].strftime('%H:%M')}刷新"
             )
         webhook_content = "\n".join(webhook_lines)
