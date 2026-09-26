@@ -1,171 +1,204 @@
 {
   "alerted": {},
-  "last_fetch_time": "2026-09-26 18:19:14",
+  "last_fetch_time": "2026-09-27 00:20:24",
   "boss_schedule": [
     {
       "name": "佩尔利斯",
       "drop": "紫",
-      "next_time": "2026-09-26 18:23:00"
-    },
-    {
-      "name": "贝希莫斯",
-      "drop": "粉",
-      "next_time": "2026-09-26 18:27:00"
+      "probability": 50,
+      "next_time": "2026-09-27 00:27:00"
     },
     {
       "name": "坦佛斯特",
       "drop": "粉",
-      "next_time": "2026-09-26 18:58:00"
-    },
-    {
-      "name": "赛鲁",
-      "drop": "粉",
-      "next_time": "2026-09-26 18:59:00"
-    },
-    {
-      "name": "安库拉",
-      "drop": "紫",
-      "next_time": "2026-09-26 18:59:00"
-    },
-    {
-      "name": "魔图拉",
-      "drop": "紫",
-      "next_time": "2026-09-26 19:01:00"
-    },
-    {
-      "name": "瓦柏",
-      "drop": "粉",
-      "next_time": "2026-09-26 19:03:00"
-    },
-    {
-      "name": "巴实那",
-      "drop": "紫",
-      "next_time": "2026-09-26 19:09:00"
-    },
-    {
-      "name": "特论巴",
-      "drop": "紫",
-      "next_time": "2026-09-26 19:23:00"
-    },
-    {
-      "name": "潘纳洛德",
-      "drop": "紫",
-      "next_time": "2026-09-26 20:05:00"
-    },
-    {
-      "name": "巨蚁女王",
-      "drop": "粉",
-      "next_time": "2026-09-26 21:11:00"
-    },
-    {
-      "name": "潘柴特",
-      "drop": "粉",
-      "next_time": "2026-09-26 21:13:00"
-    },
-    {
-      "name": "萨班",
-      "drop": "粉",
-      "next_time": "2026-09-26 21:13:00"
-    },
-    {
-      "name": "采尔图巴",
-      "drop": "紫",
-      "next_time": "2026-09-26 21:13:00"
-    },
-    {
-      "name": "史坦",
-      "drop": "粉",
-      "next_time": "2026-09-26 21:16:00"
-    },
-    {
-      "name": "布赖卡",
-      "drop": "紫",
-      "next_time": "2026-09-26 21:18:00"
-    },
-    {
-      "name": "雷比鲁",
-      "drop": "粉",
-      "next_time": "2026-09-26 21:24:00"
-    },
-    {
-      "name": "风之佛莱长老（测试）",
-      "drop": "紫",
-      "next_time": "2026-09-26 21:43:33"
-    },
-    {
-      "name": "猛龙兽",
-      "drop": "粉",
-      "next_time": "2026-09-26 22:04:00"
-    },
-    {
-      "name": "塔金",
-      "drop": "紫",
-      "next_time": "2026-09-26 23:02:00"
-    },
-    {
-      "name": "核心基座",
-      "drop": "粉",
-      "next_time": "2026-09-26 23:15:00"
-    },
-    {
-      "name": "突变克鲁玛",
-      "drop": "粉",
-      "next_time": "2026-09-26 23:15:00"
+      "probability": 50,
+      "next_time": "2026-09-27 00:58:00"
     },
     {
       "name": "凯索思",
       "drop": "紫",
+      "probability": 50,
       "next_time": "2026-09-27 01:00:00"
+    },
+    {
+      "name": "安库拉",
+      "drop": "紫",
+      "probability": 50,
+      "next_time": "2026-09-27 01:01:00"
+    },
+    {
+      "name": "魔图拉",
+      "drop": "紫",
+      "probability": 50,
+      "next_time": "2026-09-27 01:02:00"
+    },
+    {
+      "name": "潘纳洛德",
+      "drop": "紫",
+      "probability": 50,
+      "next_time": "2026-09-27 01:06:00"
     },
     {
       "name": "提米特利斯",
       "drop": "粉",
+      "probability": 100,
       "next_time": "2026-09-27 01:15:00"
     },
     {
       "name": "被污染的克鲁玛",
       "drop": "粉",
+      "probability": 100,
       "next_time": "2026-09-27 01:22:00"
     },
     {
       "name": "提米妮尔",
       "drop": "粉",
-      "next_time": "2026-09-27 01:34:00"
+      "probability": 100,
+      "next_time": "2026-09-27 01:36:00"
+    },
+    {
+      "name": "风之佛莱长老（测试）",
+      "drop": "紫",
+      "probability": 100,
+      "next_time": "2026-09-27 01:43:33"
+    },
+    {
+      "name": "特论巴",
+      "drop": "紫",
+      "probability": 50,
+      "next_time": "2026-09-27 02:23:00"
+    },
+    {
+      "name": "巴实那",
+      "drop": "紫",
+      "probability": 50,
+      "next_time": "2026-09-27 03:09:00"
     },
     {
       "name": "卡雷斯",
       "drop": "粉",
+      "probability": 50,
       "next_time": "2026-09-27 03:10:00"
+    },
+    {
+      "name": "巨蚁女王",
+      "drop": "粉",
+      "probability": 33,
+      "next_time": "2026-09-27 03:11:00"
     },
     {
       "name": "塔拉金",
       "drop": "粉",
+      "probability": 100,
       "next_time": "2026-09-27 03:12:00"
+    },
+    {
+      "name": "采尔图巴",
+      "drop": "紫",
+      "probability": 50,
+      "next_time": "2026-09-27 03:15:00"
     },
     {
       "name": "梅杜莎",
       "drop": "粉",
+      "probability": 100,
       "next_time": "2026-09-27 03:16:00"
     },
     {
       "name": "沙勒卡",
       "drop": "紫",
+      "probability": 100,
       "next_time": "2026-09-27 03:17:00"
+    },
+    {
+      "name": "布赖卡",
+      "drop": "紫",
+      "probability": 50,
+      "next_time": "2026-09-27 03:19:00"
     },
     {
       "name": "黑色蕾尔莉",
       "drop": "粉",
+      "probability": 100,
       "next_time": "2026-09-27 03:20:00"
     },
     {
       "name": "卡坦",
       "drop": "粉",
+      "probability": 100,
       "next_time": "2026-09-27 03:24:00"
+    },
+    {
+      "name": "贝希莫斯",
+      "drop": "粉",
+      "probability": 100,
+      "next_time": "2026-09-27 03:29:00"
+    },
+    {
+      "name": "史坦",
+      "drop": "粉",
+      "probability": 100,
+      "next_time": "2026-09-27 04:17:00"
+    },
+    {
+      "name": "雷比鲁",
+      "drop": "粉",
+      "probability": 50,
+      "next_time": "2026-09-27 04:24:00"
+    },
+    {
+      "name": "赛鲁",
+      "drop": "粉",
+      "probability": 33,
+      "next_time": "2026-09-27 07:00:00"
+    },
+    {
+      "name": "瓦柏",
+      "drop": "粉",
+      "probability": 50,
+      "next_time": "2026-09-27 07:03:00"
+    },
+    {
+      "name": "塔金",
+      "drop": "紫",
+      "probability": 33,
+      "next_time": "2026-09-27 07:03:00"
+    },
+    {
+      "name": "突变克鲁玛",
+      "drop": "粉",
+      "probability": 100,
+      "next_time": "2026-09-27 07:16:00"
+    },
+    {
+      "name": "潘柴特",
+      "drop": "粉",
+      "probability": 100,
+      "next_time": "2026-09-27 09:13:00"
+    },
+    {
+      "name": "萨班",
+      "drop": "粉",
+      "probability": 100,
+      "next_time": "2026-09-27 09:13:00"
+    },
+    {
+      "name": "核心基座",
+      "drop": "粉",
+      "probability": 33,
+      "next_time": "2026-09-27 09:15:00"
+    },
+    {
+      "name": "猛龙兽",
+      "drop": "粉",
+      "probability": 33,
+      "next_time": "2026-09-27 10:41:00"
     },
     {
       "name": "奥尔芬",
       "drop": "粉",
-      "next_time": "2026-09-27 13:29:00"
+      "probability": 33,
+      "next_time": "2026-09-27 22:31:00"
     }
   ]
 }
