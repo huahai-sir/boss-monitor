@@ -58,6 +58,9 @@ def fetch_bosses():
 
 def calc_next_time(boss, now):
     """计算BOSS下一次刷新时间（从现在起的下一次）"""
+    # 没有击杀时间的BOSS跳过
+    if not boss.get("last_kill_time"):
+        return None
     # API返回的last_kill_time是UTC时间，转换为北京时间UTC+8
     last_kill = datetime.strptime(boss["last_kill_time"], "%Y-%m-%d %H:%M:%S") + timedelta(hours=8)
     interval = boss["interval_hours"]
@@ -162,6 +165,8 @@ def main():
         boss_schedule = []
         for b in bosses:
             next_time = calc_next_time(b, now)
+            if next_time is None:
+                continue
             name = b["boss_name"]
             drop = "紫" if b["drop_color"] == "purple" else "粉"
             probability = b.get("probability", 0)
