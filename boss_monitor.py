@@ -29,6 +29,45 @@ FIXED_EVENTS = [
     {"name": "黄昏藏身处（4人）", "days": [1,3,5,6], "hour": 19, "minute": 30},
 ]
 
+# BOSS顺口简称映射（不在表内的取前两个字）
+SHORT_NAMES = {
+    "奥尔芬": "奥尔芬",
+    "瓦柏": "瓦柏",
+    "卡雷斯": "卡雷",
+    "塔金": "塔金",
+    "雷比鲁": "雷比",
+    "坦佛斯特": "坦佛",
+    "采尔图巴": "采尔",
+    "赛鲁": "赛鲁",
+    "安库拉": "安库",
+    "核心基座": "核心",
+    "巴实那": "巴实",
+    "潘柴特": "潘柴",
+    "萨班": "萨班",
+    "魔图拉": "魔图",
+    "佩尔利斯": "佩尔",
+    "凯索思": "凯索",
+    "巨蚁女王": "巨蚁",
+    "猛龙兽": "猛龙",
+    "塔拉金": "塔拉",
+    "梅杜莎": "梅杜",
+    "沙勒卡": "沙勒",
+    "卡坦": "卡坦",
+    "布赖卡": "布赖",
+    "贝希莫斯": "贝希",
+    "潘纳洛德": "潘纳",
+    "特论巴": "特论",
+    "黑色蕾尔莉": "黑蕾",
+    "突变克鲁玛": "突变",
+    "寇伦": "寇伦",
+    "提米特利斯": "提米",
+    "史坦": "史坦",
+    "被污染的克鲁玛": "污克",
+    "提米妮尔": "提米妮尔",
+    "风之佛莱长老": "风佛莱",
+    "火之佛莱长老": "火佛莱",
+}
+
 
 def load_state():
     if os.path.exists(STATE_FILE):
@@ -262,9 +301,9 @@ def main():
             if item.get('is_invasion'):
                 # 入侵版：名字前面加"入侵"
                 clean_name = item['name'].replace('(入侵)', '')
-                short_name = "入侵" + clean_name[:2]
+                short_name = "入侵" + SHORT_NAMES.get(clean_name, clean_name[:2])
             else:
-                short_name = item['name'][:2]  # 普通版：名字只取前两个字
+                short_name = SHORT_NAMES.get(item['name'], item['name'][:2])
             prob = item.get('probability', 0)
             webhook_lines.append(
                 f"{i}. {short_name}（{item['drop']}）{prob}% "
