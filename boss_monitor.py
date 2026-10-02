@@ -170,10 +170,13 @@ def main():
             name = b["boss_name"]
             drop = "紫" if b["drop_color"] == "purple" else "粉"
             probability = b.get("probability", 0)
+            # 判断是否为入侵版（名称带"(入侵)"后缀）
+            is_invasion = "(入侵)" in name
             boss_schedule.append({
                 "name": name,
                 "drop": drop,
                 "probability": probability,
+                "is_invasion": is_invasion,
                 "next_time": next_time.strftime("%Y-%m-%d %H:%M:%S"),
             })
         boss_schedule.sort(key=lambda x: x["next_time"])
@@ -190,6 +193,7 @@ def main():
                 "name": item["name"],
                 "drop": item["drop"],
                 "probability": item.get("probability", 0),
+                "is_invasion": item.get("is_invasion", False),
                 "next_time": next_time,
                 "diff_min": diff_min,
             })
@@ -255,7 +259,12 @@ def main():
     for group in alert_groups:
         webhook_lines = [f"{len(group)}只BOSS即将刷新："]
         for i, item in enumerate(group, 1):
-            short_name = item['name'][:2]  # 名字只取前两个字
+            if item.get('is_invasion'):
+                # 入侵版：名字前面加"入"
+                clean_name = item['name'].replace('(入侵)', '')
+                short_name = "入" + clean_name[:2]
+            else:
+                short_name = item['name'][:2]  # 普通版：名字只取前两个字
             prob = item.get('probability', 0)
             webhook_lines.append(
                 f"{i}. {short_name}（{item['drop']}）{prob}% "
