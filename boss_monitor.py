@@ -260,9 +260,9 @@ def main():
         webhook_lines = [f"{len(group)}只BOSS即将刷新："]
         for i, item in enumerate(group, 1):
             if item.get('is_invasion'):
-                # 入侵版：名字前面加"入"
+                # 入侵版：名字前面加"入侵"
                 clean_name = item['name'].replace('(入侵)', '')
-                short_name = "入" + clean_name[:2]
+                short_name = "入侵" + clean_name[:2]
             else:
                 short_name = item['name'][:2]  # 普通版：名字只取前两个字
             prob = item.get('probability', 0)
