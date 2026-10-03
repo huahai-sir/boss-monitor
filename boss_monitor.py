@@ -240,6 +240,26 @@ def main():
     upcoming.sort(key=lambda x: x["next_time"])
     print(f"未过期BOSS: {len(upcoming)} 个")
 
+    # ===== 整点预告：每个整点推送未来1小时内要刷新的BOSS =====
+    last_hourly = state.get("last_hourly_summary", "")
+    current_hour_key = now.strftime("%Y-%m-%d %H")
+    if now.minute <= 2 and last_hourly != current_hour_key:
+        hour_bosses = [u for u in upcoming if u["diff_min"] <= 60]
+        if hour_bosses:
+            lines = [f"【{now.strftime('%H:%M')}整点预告】接下来1小时{len(hour_bosses)}只BOSS刷新："]
+            for i, item in enumerate(hour_bosses, 1):
+                if item.get("is_invasion"):
+                    clean_name = item["name"].replace("(入侵)", "")
+                    short_name = "入侵" + SHORT_NAMES.get(clean_name, clean_name[:2])
+                else:
+                    short_name = SHORT_NAMES.get(item["name"], item["name"][:2])
+                prob = item.get("probability", 0)
+                lines.append(f"{i}. {short_name}（{item['drop']}）{prob}% {item['next_time'].strftime('%H:%M')}刷新")
+            send_webhook("\n".join(lines))
+            print(f"整点预告已推送: {len(hour_bosses)} 只")
+        state["last_hourly_summary"] = current_hour_key
+        save_state(state)
+
     # 分组：从最早的开始，5分钟窗口内的归为一组
     groups = []
     if upcoming:
