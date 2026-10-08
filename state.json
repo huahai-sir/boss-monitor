@@ -1,7 +1,5 @@
 {
-  "alerted": {
-    "沙勒卡_202610081000": "202610081000"
-  },
+  "alerted": {},
   "last_fetch_time": "2026-10-08 06:02:16",
   "boss_schedule": [
     {
@@ -229,5 +227,5 @@
       "next_time": "2026-10-08 15:13:00"
     }
   ],
-  "last_hourly_summary": "2026-10-08 09"
+  "last_hourly_summary": "2026-10-08 10"
 }
