@@ -1,7 +1,5 @@
 {
-  "alerted": {
-    "核心基座_202610120200": "202610120200"
-  },
+  "alerted": {},
   "last_fetch_time": "2026-10-12 00:11:13",
   "boss_schedule": [
     {
@@ -236,5 +234,5 @@
       "next_time": "2026-10-12 11:57:00"
     }
   ],
-  "last_hourly_summary": "2026-10-12 01"
+  "last_hourly_summary": "2026-10-12 02"
 }
