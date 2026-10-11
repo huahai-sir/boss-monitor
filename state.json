@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "event_黄昏藏身处（4人）_202610111930": "202610111930"
+  },
   "last_fetch_time": "2026-10-11 18:11:12",
   "boss_schedule": [
     {
