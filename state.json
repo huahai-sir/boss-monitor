@@ -1,7 +1,5 @@
 {
-  "alerted": {
-    "特论巴_202610162100": "202610162100"
-  },
+  "alerted": {},
   "last_fetch_time": "2026-10-16 18:24:14",
   "boss_schedule": [
     {
@@ -369,5 +367,5 @@
       "next_time": "2026-10-17 06:06:00"
     }
   ],
-  "last_hourly_summary": "2026-10-16 20"
+  "last_hourly_summary": "2026-10-16 21"
 }
