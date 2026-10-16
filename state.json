@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "潘纳洛德(入侵)_202610162305": "202610162305"
+  },
   "last_fetch_time": "2026-10-16 18:24:14",
   "boss_schedule": [
     {
@@ -367,5 +369,5 @@
       "next_time": "2026-10-17 06:06:00"
     }
   ],
-  "last_hourly_summary": "2026-10-16 22"
+  "last_hourly_summary": "2026-10-16 23"
 }
