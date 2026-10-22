@@ -1,7 +1,5 @@
 {
-  "alerted": {
-    "event_世界Boss_202610221200": "202610221200"
-  },
+  "alerted": {},
   "last_fetch_time": "2026-10-22 06:34:14",
   "boss_schedule": [
     {
@@ -180,5 +178,5 @@
       "next_time": "2026-10-22 15:09:00"
     }
   ],
-  "last_hourly_summary": "2026-10-22 11"
+  "last_hourly_summary": "2026-10-22 12"
 }
