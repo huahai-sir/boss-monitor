@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "潘柴特_202610220905": "202610220905"
+  },
   "last_fetch_time": "2026-10-22 06:34:14",
   "boss_schedule": [
     {
@@ -178,5 +180,5 @@
       "next_time": "2026-10-22 15:09:00"
     }
   ],
-  "last_hourly_summary": "2026-10-22 08"
+  "last_hourly_summary": "2026-10-22 09"
 }
