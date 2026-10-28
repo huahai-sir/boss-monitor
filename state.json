@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "卡雷斯_202610281805": "202610281805"
+  },
   "last_fetch_time": "2026-10-28 12:46:22",
   "boss_schedule": [
     {
@@ -129,5 +131,5 @@
       "next_time": "2026-10-28 21:06:00"
     }
   ],
-  "last_hourly_summary": "2026-10-28 17"
+  "last_hourly_summary": "2026-10-28 18"
 }
