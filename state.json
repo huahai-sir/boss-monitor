@@ -1,7 +1,5 @@
 {
-  "alerted": {
-    "凯索思_202611011900": "202611011900"
-  },
+  "alerted": {},
   "last_fetch_time": "2026-11-01 18:57:13",
   "boss_schedule": [
     {
@@ -236,5 +234,5 @@
       "next_time": "2026-11-02 05:12:00"
     }
   ],
-  "last_hourly_summary": "2026-11-01 18"
+  "last_hourly_summary": "2026-11-01 19"
 }
