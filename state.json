@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "安库拉_202611011105": "202611011105"
+  },
   "last_fetch_time": "2026-11-01 06:56:14",
   "boss_schedule": [
     {
@@ -234,5 +236,5 @@
       "next_time": "2026-11-01 17:09:00"
     }
   ],
-  "last_hourly_summary": "2026-11-01 10"
+  "last_hourly_summary": "2026-11-01 11"
 }
