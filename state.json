@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "突变克鲁玛_202611170605": "202611170605"
+  },
   "last_fetch_time": "2026-11-17 01:27:18",
   "boss_schedule": [
     {
@@ -269,5 +271,5 @@
       "next_time": "2026-11-17 10:36:00"
     }
   ],
-  "last_hourly_summary": "2026-11-17 05"
+  "last_hourly_summary": "2026-11-17 06"
 }
