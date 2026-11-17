@@ -1,7 +1,5 @@
 {
-  "alerted": {
-    "奥尔芬_202611180300": "202611180300"
-  },
+  "alerted": {},
   "last_fetch_time": "2026-11-18 01:31:14",
   "boss_schedule": [
     {
@@ -271,5 +269,5 @@
       "next_time": "2026-11-18 11:26:00"
     }
   ],
-  "last_hourly_summary": "2026-11-18 02"
+  "last_hourly_summary": "2026-11-18 03"
 }
