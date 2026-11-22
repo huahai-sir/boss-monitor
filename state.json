@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "event_异教徒地下墓穴（战盟战）_202611222105": "202611222105"
+  },
   "last_fetch_time": "2026-11-22 19:40:23",
   "boss_schedule": [
     {
@@ -262,5 +264,5 @@
       "next_time": "2026-11-23 06:27:00"
     }
   ],
-  "last_hourly_summary": "2026-11-22 20"
+  "last_hourly_summary": "2026-11-22 21"
 }
