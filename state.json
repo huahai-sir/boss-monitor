@@ -1,251 +1,20 @@
 {
   "alerted": {},
-  "last_fetch_time": "2026-11-23 13:41:16",
+  "last_fetch_time": "2026-11-23 19:42:15",
   "boss_schedule": [
-    {
-      "name": "塔金",
-      "drop": "紫",
-      "probability": 33,
-      "is_invasion": false,
-      "next_time": "2026-11-23 14:24:00"
-    },
-    {
-      "name": "黑色蕾尔莉",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 14:46:00"
-    },
-    {
-      "name": "突变克鲁玛",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 14:57:00"
-    },
-    {
-      "name": "寇伦",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 14:58:00"
-    },
-    {
-      "name": "核心基座",
-      "drop": "粉",
-      "probability": 33,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:01:00"
-    },
-    {
-      "name": "希瑟雷蒙",
-      "drop": "粉",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:10:00"
-    },
-    {
-      "name": "巨蚁女王",
-      "drop": "粉",
-      "probability": 33,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:21:00"
-    },
-    {
-      "name": "卡雷斯",
-      "drop": "粉",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:22:00"
-    },
-    {
-      "name": "坦佛斯特",
-      "drop": "粉",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:23:00"
-    },
-    {
-      "name": "佩尔利斯",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:26:00"
-    },
-    {
-      "name": "巨蚁女王(入侵)",
-      "drop": "粉",
-      "probability": 33,
-      "is_invasion": true,
-      "next_time": "2026-11-23 15:26:00"
-    },
-    {
-      "name": "布赖卡",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:32:00"
-    },
-    {
-      "name": "史坦",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:36:00"
-    },
-    {
-      "name": "贝希莫斯",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 15:42:00"
-    },
-    {
-      "name": "凯索思",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 16:26:00"
-    },
-    {
-      "name": "潘纳洛德",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 16:33:00"
-    },
-    {
-      "name": "潘纳洛德(入侵)",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": true,
-      "next_time": "2026-11-23 16:44:00"
-    },
-    {
-      "name": "克拉奇",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 16:47:00"
-    },
-    {
-      "name": "被污染的克鲁玛",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 17:28:00"
-    },
-    {
-      "name": "巴实那",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 17:29:00"
-    },
-    {
-      "name": "提米特利斯",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 17:29:00"
-    },
-    {
-      "name": "忘却之镜",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 17:38:00"
-    },
-    {
-      "name": "提米妮尔",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 18:01:00"
-    },
-    {
-      "name": "赛鲁",
-      "drop": "粉",
-      "probability": 33,
-      "is_invasion": false,
-      "next_time": "2026-11-23 18:25:00"
-    },
-    {
-      "name": "安库拉",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 18:26:00"
-    },
-    {
-      "name": "魔图拉",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 18:28:00"
-    },
-    {
-      "name": "采尔图巴",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 18:28:00"
-    },
-    {
-      "name": "瓦柏",
-      "drop": "粉",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 18:30:00"
-    },
-    {
-      "name": "梅杜莎",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 19:22:00"
-    },
-    {
-      "name": "卡坦",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 19:27:00"
-    },
-    {
-      "name": "塔拉金",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 19:30:00"
-    },
-    {
-      "name": "沙勒卡",
-      "drop": "紫",
-      "probability": 100,
-      "is_invasion": false,
-      "next_time": "2026-11-23 19:31:00"
-    },
-    {
-      "name": "梅杜莎(入侵)",
-      "drop": "粉",
-      "probability": 100,
-      "is_invasion": true,
-      "next_time": "2026-11-23 19:34:00"
-    },
-    {
-      "name": "特论巴",
-      "drop": "紫",
-      "probability": 50,
-      "is_invasion": false,
-      "next_time": "2026-11-23 19:40:00"
-    },
     {
       "name": "雷比鲁",
       "drop": "粉",
       "probability": 50,
       "is_invasion": false,
       "next_time": "2026-11-23 19:51:00"
+    },
+    {
+      "name": "特论巴(入侵)",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": true,
+      "next_time": "2026-11-23 20:02:00"
     },
     {
       "name": "潘柴特",
@@ -255,6 +24,13 @@
       "next_time": "2026-11-23 21:20:00"
     },
     {
+      "name": "坦佛斯特",
+      "drop": "粉",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-23 21:23:00"
+    },
+    {
       "name": "萨班",
       "drop": "粉",
       "probability": 100,
@@ -262,11 +38,88 @@
       "next_time": "2026-11-23 21:24:00"
     },
     {
+      "name": "巴实那(入侵)",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": true,
+      "next_time": "2026-11-23 21:24:00"
+    },
+    {
+      "name": "巨蚁女王",
+      "drop": "粉",
+      "probability": 33,
+      "is_invasion": false,
+      "next_time": "2026-11-23 21:25:00"
+    },
+    {
+      "name": "佩尔利斯",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-23 21:27:00"
+    },
+    {
+      "name": "巨蚁女王(入侵)",
+      "drop": "粉",
+      "probability": 33,
+      "is_invasion": true,
+      "next_time": "2026-11-23 21:27:00"
+    },
+    {
+      "name": "巴实那",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-23 21:29:00"
+    },
+    {
+      "name": "希瑟雷蒙",
+      "drop": "粉",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-23 21:29:00"
+    },
+    {
+      "name": "潘纳洛德",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-23 21:33:00"
+    },
+    {
+      "name": "布赖卡",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-23 21:33:00"
+    },
+    {
+      "name": "佩尔利斯(入侵)",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": true,
+      "next_time": "2026-11-23 21:34:00"
+    },
+    {
       "name": "兰多勒",
       "drop": "粉",
       "probability": 100,
       "is_invasion": false,
-      "next_time": "2026-11-23 21:39:00"
+      "next_time": "2026-11-23 21:42:00"
+    },
+    {
+      "name": "潘纳洛德(入侵)",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": true,
+      "next_time": "2026-11-23 21:44:00"
+    },
+    {
+      "name": "塔金",
+      "drop": "紫",
+      "probability": 33,
+      "is_invasion": false,
+      "next_time": "2026-11-23 22:24:00"
     },
     {
       "name": "猛龙兽",
@@ -276,6 +129,41 @@
       "next_time": "2026-11-23 22:25:00"
     },
     {
+      "name": "史坦",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-23 22:27:00"
+    },
+    {
+      "name": "史坦(入侵)",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": true,
+      "next_time": "2026-11-23 22:38:00"
+    },
+    {
+      "name": "突变克鲁玛",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-23 22:58:00"
+    },
+    {
+      "name": "突变克鲁玛(入侵)",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": true,
+      "next_time": "2026-11-23 23:11:00"
+    },
+    {
+      "name": "克拉奇(入侵)",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": true,
+      "next_time": "2026-11-23 23:23:00"
+    },
+    {
       "name": "猛龙兽(入侵)",
       "drop": "粉",
       "probability": 33,
@@ -283,11 +171,158 @@
       "next_time": "2026-11-23 23:24:00"
     },
     {
+      "name": "卡雷斯",
+      "drop": "粉",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-24 00:24:00"
+    },
+    {
+      "name": "安库拉",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-24 00:26:00"
+    },
+    {
+      "name": "魔图拉",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-24 00:29:00"
+    },
+    {
+      "name": "采尔图巴",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-24 00:31:00"
+    },
+    {
+      "name": "贝希莫斯",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 00:44:00"
+    },
+    {
+      "name": "克拉奇",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 00:47:00"
+    },
+    {
+      "name": "核心基座",
+      "drop": "粉",
+      "probability": 33,
+      "is_invasion": false,
+      "next_time": "2026-11-24 01:04:00"
+    },
+    {
       "name": "奥尔芬",
       "drop": "粉",
       "probability": 33,
       "is_invasion": false,
       "next_time": "2026-11-24 01:27:00"
+    },
+    {
+      "name": "被污染的克鲁玛",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 01:29:00"
+    },
+    {
+      "name": "提米特利斯",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 01:30:00"
+    },
+    {
+      "name": "提米妮尔",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 02:05:00"
+    },
+    {
+      "name": "凯索思",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-24 02:26:00"
+    },
+    {
+      "name": "特论巴",
+      "drop": "紫",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-24 02:40:00"
+    },
+    {
+      "name": "黑色蕾尔莉",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 02:46:00"
+    },
+    {
+      "name": "寇伦",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 03:00:00"
+    },
+    {
+      "name": "忘却之镜",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 04:42:00"
+    },
+    {
+      "name": "梅杜莎",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 05:22:00"
+    },
+    {
+      "name": "卡坦",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 05:27:00"
+    },
+    {
+      "name": "塔拉金",
+      "drop": "粉",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 05:30:00"
+    },
+    {
+      "name": "沙勒卡",
+      "drop": "紫",
+      "probability": 100,
+      "is_invasion": false,
+      "next_time": "2026-11-24 05:31:00"
+    },
+    {
+      "name": "赛鲁",
+      "drop": "粉",
+      "probability": 33,
+      "is_invasion": false,
+      "next_time": "2026-11-24 06:25:00"
+    },
+    {
+      "name": "瓦柏",
+      "drop": "粉",
+      "probability": 50,
+      "is_invasion": false,
+      "next_time": "2026-11-24 06:30:00"
     }
   ],
   "last_hourly_summary": "2026-11-23 19"
