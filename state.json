@@ -1,5 +1,7 @@
 {
-  "alerted": {},
+  "alerted": {
+    "史坦_202611251605": "202611251605"
+  },
   "last_fetch_time": "2026-11-25 13:45:22",
   "boss_schedule": [
     {
@@ -171,5 +173,5 @@
       "next_time": "2026-11-26 01:00:00"
     }
   ],
-  "last_hourly_summary": "2026-11-25 15"
+  "last_hourly_summary": "2026-11-25 16"
 }
