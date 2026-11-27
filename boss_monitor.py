@@ -12,11 +12,18 @@ import urllib.request
 from datetime import datetime, timedelta
 
 # ============ 配置 ============
-BOSS_API_URL = "https://onizuka.cn/api/guild-boss-manual/public/DPXT94"
+BOSS_API_URL = "https://onizuka.cn/api/guild-boss-manual/public/JHGDJ2"
 CHAT_ID = os.environ.get("WECHAT_CHAT_ID", "wrQa_gFQAAoiH2AthDJoiIAQVAfD7ohw")
 STATE_FILE = os.path.join(os.path.dirname(os.path.abspath(__file__)), "state.json")
 ALERT_MINUTES = 5
 REFRESH_INTERVAL_HOURS = 6
+
+# 掉落颜色映射
+DROP_MAP = {
+    "purple": "紫",
+    "pink": "粉",
+    "gold": "金",
+}
 
 # 固定活动提醒（每周几：0=周一, 6=周日）
 FIXED_EVENTS = [
@@ -66,6 +73,10 @@ SHORT_NAMES = {
     "提米妮尔": "提米妮尔",
     "风之佛莱长老": "风佛莱",
     "火之佛莱长老": "火佛莱",
+    "忘却之镜": "忘镜",
+    "兰多勒": "兰多",
+    "希瑟雷蒙": "希瑟",
+    "克拉奇": "克拉",
 }
 
 
@@ -207,7 +218,7 @@ def main():
             if next_time is None:
                 continue
             name = b["boss_name"]
-            drop = "紫" if b["drop_color"] == "purple" else "粉"
+            drop = DROP_MAP.get(b.get("drop_color"), "粉")
             probability = b.get("probability", 0)
             # 判断是否为入侵版（名称带"(入侵)"后缀）
             is_invasion = "(入侵)" in name
